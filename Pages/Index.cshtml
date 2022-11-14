@@ -1,0 +1,14 @@
+﻿@page "{handler?}"
+@using DotBlog.Models
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-right">
+    @foreach (Post post in Model.Posts)
+    {
+        <h1><a asp-page="Detail" asp-route-title=@post.Title>@post.Title</a></h1>
+        <h4>@post.Content</h4>
+    }     
+</div>
