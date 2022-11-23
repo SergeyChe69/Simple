@@ -26,7 +26,7 @@ namespace DotBlog.Models.Actions
 
         public IQueryable<Post> GetAll()
         {
-            return _context.Posts;
+            return _context.Posts as IQueryable<Post>;
         }
 
         public Post GetPost(string title)
