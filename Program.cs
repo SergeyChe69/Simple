@@ -1,4 +1,5 @@
 using DotBlog.Helpers;
+using DotBlog.Helpers.Middlewares;
 using DotBlog.Models.Actions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +20,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseMiddleware<RedirectMiddleware>();
 app.UseStaticFiles();
 
 app.UseRouting();
