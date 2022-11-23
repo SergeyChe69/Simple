@@ -1,6 +1,7 @@
 using DotBlog.Helpers;
 using DotBlog.Helpers.Middlewares;
 using DotBlog.Models.Actions;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddScoped<IRepository, Repository>();
 builder.Services.AddDbContext<DataContext>();
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<IdentityContext>();
 
 var app = builder.Build();
 
@@ -19,13 +22,15 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+
+app.UseAuthentication();
+app.UseAuthorization();
+
 app.UseHttpsRedirection();
 app.UseMiddleware<RedirectMiddleware>();
 app.UseStaticFiles();
 
 app.UseRouting();
-
-app.UseAuthorization();
 
 app.MapRazorPages();
 
