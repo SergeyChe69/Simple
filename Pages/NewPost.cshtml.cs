@@ -13,12 +13,12 @@ namespace MyApp.Namespace
         {
             _repository = repository;
         }
-        public void OnPost(string title, string content)
+        public async Task OnPostAsync(string title, string content)
         {
             PostViewModel newPost = new PostViewModel();
             newPost.Title = title;
             newPost.Content = content;
-            _repository.AddPost(newPost);
+            await _repository.AddPost(newPost);
         }
     }
 }
