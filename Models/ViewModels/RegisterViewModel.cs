@@ -18,7 +18,7 @@ namespace DotBlog.Models.ViewModels
         [Required]
         [Compare("Password", ErrorMessage = "Password aren't comparing!!!")]
         [DataType(DataType.Password)]
-        [Display(Name = "Repeat password")]
+        [Display(Name = "Confirm password")]
         public string PasswordConfirm { get; set; }
     }
 }

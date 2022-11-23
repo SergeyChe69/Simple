@@ -9,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddScoped<IRepository, Repository>();
 builder.Services.AddDbContext<DataContext>();
+builder.Services.AddDbContext<IdentityContext>();
+
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<IdentityContext>();
 

@@ -12,10 +12,9 @@ namespace DotBlog.Helpers
         {
             Configuration = config;
         }
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite(Configuration.GetConnectionString("IdentityDB"));
+            optionsBuilder.UseSqlite(Configuration.GetConnectionString("Identity"));
         }
     }
 }

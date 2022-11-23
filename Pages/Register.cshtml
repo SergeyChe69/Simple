@@ -1,0 +1,27 @@
+﻿@page
+@* @model MyApp.Namespace.RegisterModel *@
+@model Models.ViewModels.RegisterViewModel
+@{
+    ViewData["Title"] = "Регистрация";
+}
+
+<form method="post" asp-action="Register" asp-validation-summary="ModelOnly">
+    <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email" type="email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div>
+        <label asp-for="Password"></label>
+        <input asp-for="Password" type="password" />
+        <span asp-validation-for="Password"></span>
+    </div>
+    <div>
+        <label asp-for="PasswordConfirm"></label>
+        <input asp-for="PasswordConfirm" type="password" />
+        <span asp-validation-for="Password"></span>
+    </div>
+    <div>
+        <input type="submit" value="Регистрация" />
+    </div>
+</form>
