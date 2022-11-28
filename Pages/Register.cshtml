@@ -1,27 +1,27 @@
 ﻿@page
-@* @model MyApp.Namespace.RegisterModel *@
-@model Models.ViewModels.RegisterViewModel
+@model MyApp.Namespace.RegisterModel
 @{
     ViewData["Title"] = "Регистрация";
 }
 
-<form method="post" asp-action="Register" asp-validation-summary="ModelOnly">
+<form method="post" asp-action="Register" asp-validation-summary="ModelOnly" asp-antiforgery="true">
+    <div>@ViewData["errors"]</div>
     <div>
-        <label asp-for="Email"></label>
-        <input asp-for="Email" type="email" />
-        <span asp-validation-for="Email"></span>
+        <label asp-for="UsersInput.Email"></label>
+        <input asp-for="UsersInput.Email" type="email" />
+        <span asp-validation-for="UsersInput.Email"></span>
     </div>
     <div>
-        <label asp-for="Password"></label>
-        <input asp-for="Password" type="password" />
-        <span asp-validation-for="Password"></span>
+        <label asp-for="UsersInput.Password"></label>
+        <input asp-for="UsersInput.Password" type="password" />
+        <span asp-validation-for="UsersInput.Password"></span>
     </div>
     <div>
-        <label asp-for="PasswordConfirm"></label>
-        <input asp-for="PasswordConfirm" type="password" />
-        <span asp-validation-for="Password"></span>
+        <label asp-for="UsersInput.PasswordConfirm"></label>
+        <input asp-for="UsersInput.PasswordConfirm" type="password" />
+        <span asp-validation-for="UsersInput.Password"></span>
     </div>
     <div>
-        <input type="submit" value="Регистрация" />
+        <button type="submit">Регистрация</button>
     </div>
 </form>

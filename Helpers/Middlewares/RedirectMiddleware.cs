@@ -11,9 +11,9 @@ namespace DotBlog.Helpers.Middlewares
         public async Task InvokeAsync(HttpContext context)
         {
             string url = context.Request.PathBase;
-            if(context.Request.Path == "/Privacy")
+            if(context.Request.Path == "/NewPost" && !context.User.Identity.IsAuthenticated)
             {
-                context.Response.Redirect("/Index");
+                context.Response.Redirect("/Register");
             }
             else
             {

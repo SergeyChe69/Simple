@@ -5,17 +5,17 @@ namespace DotBlog.Models.ViewModels
     /// <summary>Fields for Register</summary>
     public class RegisterViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Email")]
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Password")]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Confirm password")]
         [Compare("Password", ErrorMessage = "Password aren't comparing!!!")]
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]

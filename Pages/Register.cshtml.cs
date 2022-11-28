@@ -9,27 +9,27 @@ namespace MyApp.Namespace
     {
         private readonly UserManager<IdentityUser> userManager;
         private readonly SignInManager<IdentityUser> signInManager;
+        [BindProperty]
+        public RegisterViewModel UsersInput { get; set; }
 
         public RegisterModel(UserManager<IdentityUser> usrManager,
-                        SignInManager<IdentityUser> inManager)
+                             SignInManager<IdentityUser> inManager)
         {
             userManager = usrManager;
             signInManager = inManager;
         }
 
-        public void OnGet()
-        {
-        }
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterViewModel model)
+        public async Task<IActionResult> OnPostAsync()
         {
             if(ModelState.IsValid)
             {
                 IdentityUser newUser = new IdentityUser
                 {
-                    Email = model.Email
+                    UserName = UsersInput.Email,
+                    Email = UsersInput.Email
                 };
-                var result = await userManager.CreateAsync(newUser, model.Password);
+                var result = await userManager.CreateAsync(newUser, UsersInput.Password);
                 if (result.Succeeded)
                 {
                     await signInManager.SignInAsync(newUser, false);
@@ -38,10 +38,10 @@ namespace MyApp.Namespace
                 else
                 {
                     foreach (IdentityError error in result.Errors)
-                        ModelState.AddModelError(string.Empty, error.Description);
+                        ModelState.AddModelError("errors", error.Description);
                 }
             }
-            return Page();
+            return  Page();
         }
     }
 }
